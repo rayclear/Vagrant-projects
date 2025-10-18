@@ -1,0 +1,45 @@
+#copy and past had shi f ur vagrantfile the save the vagrantfile then dir vagrant up
+# 3 vm ubuntu , Centos, Debian
+
+
+
+Vagrant.configure("2") do |config|
+  # --- Machine 1 : Ubuntu ---
+  config.vm.define "ubuntu" do |ubuntu|
+    ubuntu.vm.box = "ubuntu/jammy64"
+    ubuntu.vm.hostname = "ubuntu-server"
+    ubuntu.vm.network "private_network", ip: "192.168.56.10"
+    ubuntu.vm.provider "virtualbox" do |vb|
+      vb.memory = "1024"
+      vb.cpus = 1
+    end
+  end
+
+  # --- Machine 2 : CentOS ---
+  config.vm.define "centos" do |centos|
+    centos.vm.box = "centos/7"
+    centos.vm.hostname = "centos-server"
+    centos.vm.network "private_network", ip: "192.168.56.11"
+    centos.vm.provider "virtualbox" do |vb|
+      vb.memory = "1024"
+      vb.cpus = 1
+    end
+  end
+
+  # --- Machine 3 : Debian ---
+  config.vm.define "debian" do |debian|
+    debian.vm.box = "debian/bookworm64"
+    debian.vm.hostname = "debian-server"
+    debian.vm.network "private_network", ip: "192.168.56.12"
+    debian.vm.provider "virtualbox" do |vb|
+      vb.memory = "1024"
+      vb.cpus = 1
+    end
+  end
+end
+
+
+
+
+
+
